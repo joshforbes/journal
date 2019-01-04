@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\EmailAddressParser;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreJournalRequest extends FormRequest
@@ -32,7 +33,7 @@ class StoreJournalRequest extends FormRequest
     public function prepareForValidation()
     {
         $this->replace([
-            'email' => $this->From,
+            'email' => EmailAddressParser::parse($this->From),
             'body' => $this->get('body-plain')
         ]);
     }

@@ -28,10 +28,10 @@ class JournalTest extends TestCase
      */
     public function it_creates_a_new_journal_entry_from_webhook()
     {
-        $user = factory(User::class)->create();
+        $user = factory(User::class)->create(['email' => 'bob@test.com']);
 
         $response = $this->json('POST', 'api/journal/', [
-            'From' => $user->email,
+            'From' => 'Bob <bob@test.com>',
             'body-plain' => 'new post'
         ]);
 
