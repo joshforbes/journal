@@ -13,6 +13,11 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get('journal/{journalId}', 'JournalController@show');
+Route::post('journal', 'JournalController@store');
+
+Route::get('user/{userId}/journals', 'UserJournalController@index');
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
