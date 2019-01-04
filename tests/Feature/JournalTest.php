@@ -35,7 +35,7 @@ class JournalTest extends TestCase
             'body-plain' => 'new post'
         ]);
 
-        $response->dump()->assertStatus(201);
+        $response->assertStatus(201);
         $this->assertDatabaseHas('journals', [
             'user_id' => $user->id,
             'body' => 'new post'
